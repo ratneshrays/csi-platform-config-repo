@@ -57,15 +57,3 @@ spring:
 app:
     jwt:
         secret: MiAVzqUXy5Tfr1kVIGpPMiAVzqUXy5Tfr1kVIGpP
-    
-resilience4j:
-  circuitbreaker:
-    configs: 
-      default:
-            registerHealthIndicator: true
-            slidingWindowSize: 50
-  timelimiter:
-    configs:
-        default:
-            timeoutDuration: 5s
-            cancelRunningFuture: true
