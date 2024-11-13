@@ -1,0 +1,7 @@
+server: 
+    port: 9093
+
+app: 
+    jwt: 
+        secret: MiAVzqUXy5Tfr1kVIGpPMiAVzqUXy5Tfr1kVIGpP
+        expiration: 86400

@@ -1,37 +1,39 @@
 server:
-	port: 9090
+    port: 9090
+    
 app:
-	jwt:
-		secret: MiAVzqUXy5Tfr1kVIGpPMiAVzqUXy5Tfr1kVIGpP
-spring:
-	cloud:
-		gateway:
-			routes:
-				- id : CSI-PLATFORM-AUTH
-				uri: lb://CSI-PLATFORM-AUTH
-				predicates:
-					- Path=/csi-platform-auth/api/v1/**
-					- Method=GET,POST,PUT,DELETE
-				filters:
-					- name: CircuitBreaker
-					args:
-						name: retailBankCircuitBreaker
-						fallbackUri: forward:/fallback/retailBankFallback
+    jwt:
+    secret: MiAVzqUXy5Tfr1kVIGpPMiAVzqUXy5Tfr1kVIGpP
+    
+spring: 
+    cloud:
+        gateway:
+            routes:
+                -id : CSI-PLATFORM-AUTH
+                uri: lb://CSI-PLATFORM-AUTH
+                predicates:
+                    -Path: /csi-platform-auth/api/v1/**
+                    -Method: GET,POST,PUT,DELETE
+                filters:
+                    -name: CircuitBreaker
+                    args:
+                        name: retailBankCircuitBreaker
+                        fallbackUri: forward:/fallback/retailBankFallback
 				
-				- id : CSI-PLATFORM-SERVICE
-				uri: lb://CSI-PLATFORM-SERVICE
-				predicates:
-					- Path=/csi-platform-service/api/v1/**
-					- Method=GET,POST,PUT,DELETE
+                -id : CSI-PLATFORM-SERVICE
+                uri: lb://CSI-PLATFORM-SERVICE
+                predicates:
+                    -Path: /csi-platform-service/api/v1/**
+                    -Method: GET,POST,PUT,DELETE
 				
-				- id : CSI-ACCOUNT-SERVICE
-				uri: lb://CSI-ACCOUNT-SERVICE
-				predicates:
-					- Path=/csi-account-service/api/v1/**
-					- Method=GET,POST,PUT,DELETE
+                -id : CSI-ACCOUNT-SERVICE
+                uri: lb://CSI-ACCOUNT-SERVICE
+                predicates:
+                    -Path: /csi-account-service/api/v1/**
+                    -Method: GET,POST,PUT,DELETE
 				
-				- id : CSI-USER-SERVICE
-				uri: lb://CSI-USER-SERVICE
-				predicates:
-					- Path=/csi-user-service/api/v1/**
-					- Method=GET,POST,PUT,DELETE
+                -id : CSI-USER-SERVICE
+                uri: lb://CSI-USER-SERVICE
+                predicates:
+                    -Path: /csi-user-service/api/v1/**
+                    -Method: GET,POST,PUT,DELETE
