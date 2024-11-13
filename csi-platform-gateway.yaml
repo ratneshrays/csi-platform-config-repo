@@ -11,24 +11,44 @@ spring:
                   predicates:
                       - Path=/csi-platform-auth/api/v1/**
                       - Method=GET,POST,PUT,DELETE
+                  filters:
+                      - name: CircuitBreaker
+                        args: 
+                            name: CSI-PLATFORM-AUTH
+                            fallbackuri: /gateway/api/v1/fallback
 
                 - id : CSI-PLATFORM-SERVICE
                   uri: lb://CSI-PLATFORM-SERVICE
                   predicates:
                       - Path=/csi-platform-service/api/v1/**
                       - Method=GET,POST,PUT,DELETE
+                  filters:
+                      - name: CircuitBreaker
+                        args: 
+                            name: CSI-ACCOUNT-SERVICE
+                            fallbackuri: /gateway/api/v1/fallback
 
                 - id : CSI-ACCOUNT-SERVICE
                   uri: lb://CSI-ACCOUNT-SERVICE
                   predicates:
                       - Path=/csi-account-service/api/v1/**
                       - Method=GET,POST,PUT,DELETE
+                  filters:
+                      - name: CircuitBreaker
+                        args: 
+                            name: CSI-ACCOUNT-SERVICE
+                            fallbackuri: /gateway/api/v1/fallback
 
                 - id : CSI-USER-SERVICE
                   uri: lb://CSI-USER-SERVICE
                   predicates:
                       - Path=/csi-user-service/api/v1/**
                       - Method=GET,POST,PUT,DELETE
+                  filters:
+                      - name: CircuitBreaker
+                        args: 
+                            name: CSI-USER-SERVICE
+                            fallbackuri: /gateway/api/v1/fallback
 
 app:
     jwt:
