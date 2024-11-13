@@ -16,6 +16,7 @@ spring:
                         args: 
                             name: CSI-PLATFORM-AUTH
                             fallbackuri: /gateway/api/v1/fallback
+                      - name: AuthenticationFilter
 
                 - id : CSI-PLATFORM-SERVICE
                   uri: lb://CSI-PLATFORM-SERVICE
@@ -27,6 +28,7 @@ spring:
                         args: 
                             name: CSI-ACCOUNT-SERVICE
                             fallbackuri: /gateway/api/v1/fallback
+                      - name: AuthenticationFilter
 
                 - id : CSI-ACCOUNT-SERVICE
                   uri: lb://CSI-ACCOUNT-SERVICE
@@ -38,6 +40,7 @@ spring:
                         args: 
                             name: CSI-ACCOUNT-SERVICE
                             fallbackuri: /gateway/api/v1/fallback
+                      - name: AuthenticationFilter
 
                 - id : CSI-USER-SERVICE
                   uri: lb://CSI-USER-SERVICE
@@ -49,6 +52,7 @@ spring:
                         args: 
                             name: CSI-USER-SERVICE
                             fallbackuri: /gateway/api/v1/fallback
+                      - name: AuthenticationFilter
 
 app:
     jwt:
